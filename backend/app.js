@@ -1,12 +1,13 @@
 const express = require("express");
-const PORT = 5000;
+require("dotenv").config();
+
+
+const PORT = process.env.PORT;
 
 const app = express()
 
 
-app.get("/", (req, res, next) => {
-    res.json({ message: "App running ..." })
-})
+app.use("/task", require("./api/routes/task"))
 
 
 app.listen(PORT, () => {
